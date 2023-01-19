@@ -59,7 +59,35 @@ public class MainActivity extends AppCompatActivity {
         else
             answer.setText("На ноль делить нельзя!");
 
-
     }
 
+    public void exponent(View view) {
+        EditText num1 = findViewById(R.id.numberField1);
+        EditText num2 = findViewById(R.id.numberField2);
+        TextView answer = findViewById(R.id.answerText);
+
+        Double answ = Math.pow(Double.parseDouble(num1.getText().toString()), Double.parseDouble(num2.getText().toString()));
+
+        answer.setText(answ.toString());
+    }
+
+    public void random(View view) {
+        EditText num1 = findViewById(R.id.numberField1);
+        EditText num2 = findViewById(R.id.numberField2);
+        TextView answer = findViewById(R.id.answerText);
+
+        Integer min = Integer.parseInt(num1.getText().toString());
+        Integer max = Integer.parseInt(num2.getText().toString());
+
+        if(max < min){
+            int buf = min;
+            min = max;
+            max = buf;
+        }
+
+        max-=min;
+
+        Integer answ = (int) (Math.random() * ++max) + min;
+        answer.setText(answ.toString());
+    }
 }
